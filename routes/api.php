@@ -17,4 +17,6 @@ Route::group(['middleware' => ['guest:api']], static function() {
 // Route group for authenticated users only
 Route::group(['middleware' => ['auth:api']], static function() {
     Route::post('logout', 'Auth\LoginController@logout');
+    Route::put('settings/profile', 'User\SettingsController@updateProfile');
+    Route::put('settings/password', 'User\SettingsController@updatePassword');
 });
