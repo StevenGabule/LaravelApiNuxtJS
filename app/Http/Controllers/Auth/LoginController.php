@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
@@ -58,5 +59,11 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             $this->username() => 'Invalid Credentials'
         ]);
+    }
+
+    public function logout()
+    {
+        $this->guard()->logout();
+        return response()->json(['message' => 'logged out successfully']);
     }
 }
