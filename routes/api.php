@@ -22,4 +22,7 @@ Route::group(['middleware' => ['auth:api']], static function() {
 
     // upload designs
     Route::post('designs', 'Designs\UploadController@upload');
+    Route::put('designs/{id}', 'Designs\DesignController@update');
+    Route::delete('designs/{id}', 'Designs\DesignController@destroy');
+
 });
