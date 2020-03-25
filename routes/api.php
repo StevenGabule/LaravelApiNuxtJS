@@ -19,4 +19,7 @@ Route::group(['middleware' => ['auth:api']], static function() {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::put('settings/profile', 'User\SettingsController@updateProfile');
     Route::put('settings/password', 'User\SettingsController@updatePassword');
+
+    // upload designs
+    Route::post('designs', 'Designs\UploadController@upload');
 });
