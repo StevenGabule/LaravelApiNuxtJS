@@ -10,11 +10,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 use App\Http\Resources\DesignResource;
 use App\Repositories\Contracts\IDesign;
-use App\Repositories\Eloquent\Criteria\{
-    IsLive,
-    LatestFirst,
-    ForUser
-};
+use App\Repositories\Eloquent\Criteria\{EagerLoad, IsLive, LatestFirst, ForUser};
 
 class DesignController extends Controller
 {
@@ -29,7 +25,8 @@ class DesignController extends Controller
         $designs = $this->designs->withCriteria([
             new LatestFirst(),
             new IsLive(),
-            new ForUser(1)
+            new ForUser(1),
+            new EagerLoad(['user', 'comments'])
         ])->all();
         return DesignResource::collection($designs);
     }
