@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Storage;
+use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Storage;
 use Cviebrock\EloquentTaggable\Taggable;
 
 class Design extends Model
 {
-    use Taggable;
+    use Taggable, Likeable;
     protected $fillable = [
         'user_id',
         'image',
@@ -46,4 +47,6 @@ class Design extends Model
     {
         return Storage::disk($this->disk)->url("uploads/designs/{$size}/{$this->image}");
     }
+
+
 }
