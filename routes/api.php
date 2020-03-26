@@ -31,4 +31,9 @@ Route::group(['middleware' => ['auth:api']], static function() {
     Route::put('designs/{id}', 'Designs\DesignController@update');
     Route::delete('designs/{id}', 'Designs\DesignController@destroy');
 
+    // comments
+    Route::post('designs/{id}/comments', 'Designs\CommentController@store');
+    Route::put('comments/{id}', 'Designs\CommentController@update');
+    Route::delete('comments/{id}', 'Designs\CommentController@destroy');
+
 });

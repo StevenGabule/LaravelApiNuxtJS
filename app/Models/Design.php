@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Storage;
 use Cviebrock\EloquentTaggable\Taggable;
 
@@ -21,12 +23,18 @@ class Design extends Model
         'disk',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function getImagesAttribute() {
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'asc');
+    }
+
+    public function getImagesAttribute(): array
+    {
         return [
             'thumbnail' => $this->getImagePath('thumbnail'),
             'large' => $this->getImagePath('large'),
