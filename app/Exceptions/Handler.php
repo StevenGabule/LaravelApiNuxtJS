@@ -6,6 +6,8 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Exceptions\ModelNotDefined;
+
 
 class Handler extends ExceptionHandler
 {
@@ -64,6 +66,12 @@ class Handler extends ExceptionHandler
             return response()->json(['error' =>[
                 'message' => 'The resource you are trying to access is not found.'
             ]], 404);
+        }
+
+        if ($exception instanceof ModelNotDefined && $request->expectsJson()) {
+            return response()->json(['error' =>[
+                'message' => 'No model defined'
+            ]], 500);
         }
         
         return parent::render($request, $exception);
