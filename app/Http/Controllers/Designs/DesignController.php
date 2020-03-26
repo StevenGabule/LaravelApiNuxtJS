@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Designs;
 
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,37 +20,44 @@ class DesignController extends Controller
         $this->designs = $designs;
     }
     
-    public function index() {
+    public function index(): AnonymousResourceCollection
+    {
         $designs = $this->designs->all();
         return DesignResource::collection($designs);
     }
 
-    public function update(Request $request, $id) {
-        
-        $design = Design::findOrFail($id);
+    public function findDesign($id): DesignResource
+    {
+        $design = $this->designs->find($id);
+        return new DesignResource($design);
+    }
 
+    public function update(Request $request, $id): DesignResource
+    {
+        $design = $this->designs->find($id);
         $this->authorize('update', $design);
-        
         $this->validate($request, [
             'title' => ['required', 'unique:designs,title,'.$id],
             'description' => ['required', 'string', 'min:20', 'max:140'],
             'tags' => ['required']
         ]);
 
-        $design->update([
+        $this->designs->update($id, [
             'title' => $request->title,
             'description' => $request->description,
             'slug' => Str::slug($request->title),
             'is_live' => !$design->upload_successful ? false : $request->is_live,
         ]);
+
         // apply the tags
-        $design->retag($request->tags);
+        $this->designs->applyTags($id, $request->tags);
+
         return new DesignResource($design);
     }
 
     public function destroy($id) 
     {
-        $design = Design::findOrFail($id);
+        $design = $this->designs->find($id);
 
         $this->authorize('delete', $design);
 
@@ -61,7 +69,7 @@ class DesignController extends Controller
             }
         }
 
-        $design->delete();
+        $this->designs->delete();
 
         return response()->json(['message' => 'Recored Deleted.'], 200);
     }
