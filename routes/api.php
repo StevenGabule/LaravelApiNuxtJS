@@ -3,6 +3,11 @@
 // public routes
 Route::get('me', 'User\MeController@getMe');
 
+// get design
+Route::get('designs', 'Designs\DesignController@index');
+
+// get users
+Route::get('users', 'User\UserController@index');
 
 // Route group for guest only
 Route::group(['middleware' => ['guest:api']], static function() {
