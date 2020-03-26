@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Designs;
 
-use App\Repositories\Eloquent\Criteria\IsLive;
+
 use Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,7 +10,11 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 use App\Http\Resources\DesignResource;
 use App\Repositories\Contracts\IDesign;
-use App\Repositories\Eloquent\Criteria\LatestFirst;
+use App\Repositories\Eloquent\Criteria\{
+    IsLive,
+    LatestFirst,
+    ForUser
+};
 
 class DesignController extends Controller
 {
@@ -24,7 +28,8 @@ class DesignController extends Controller
     {
         $designs = $this->designs->withCriteria([
             new LatestFirst(),
-            new IsLive()
+            new IsLive(),
+            new ForUser(1)
         ])->all();
         return DesignResource::collection($designs);
     }
