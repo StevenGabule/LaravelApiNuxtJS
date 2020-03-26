@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Designs;
 
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Repositories\Eloquent\Criteria\IsLive;
 use Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-use App\Models\Design;
 use App\Http\Resources\DesignResource;
 use App\Repositories\Contracts\IDesign;
-
+use App\Repositories\Eloquent\Criteria\LatestFirst;
 
 class DesignController extends Controller
 {
@@ -22,7 +22,10 @@ class DesignController extends Controller
     
     public function index(): AnonymousResourceCollection
     {
-        $designs = $this->designs->all();
+        $designs = $this->designs->withCriteria([
+            new LatestFirst(),
+            new IsLive()
+        ])->all();
         return DesignResource::collection($designs);
     }
 
