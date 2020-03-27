@@ -14,6 +14,7 @@ class Design extends Model
     use Taggable, Likeable;
     protected $fillable = [
         'user_id',
+        'team_id',
         'image',
         'title',
         'description',
@@ -29,7 +30,12 @@ class Design extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comments(): MorphMany
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'asc');
     }
