@@ -6,12 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function toArray($request) : array
     {
         return [
@@ -21,6 +15,7 @@ class UserResource extends JsonResource
                 'email' => $this->email,
             ]),
             'name' => $this->name,
+            'photo_url' => $this->photo_url,
             'designs' => DesignResource::collection($this->whenLoaded('designs')),
             'formatted_address' => $this->formatted_address,
             'tagline' => $this->tagline,

@@ -6,16 +6,20 @@ Route::get('me', 'User\MeController@getMe');
 // get design
 Route::get('designs', 'Designs\DesignController@index');
 Route::get('designs/{id}', 'Designs\DesignController@findDesign');
-
+Route::get('designs/slug/{slug}', 'Designs\DesignController@findBySlug');
 
 // get users
 Route::get('users', 'User\UserController@index');
+Route::get('user/{username}', 'User\UserController@findByUsername');
+Route::get('users/{id}/designs', 'Designs\DesignController@getForUser');
 
 // get teams
 Route::get('teams/slug/{slug}', 'Teams\TeamsController@findBySlug');
+Route::get('teams/{id}/designs', 'Designs\DesignController@getForTeam');
 
 // search designs
 Route::get('search/designs', 'Designs\DesignController@search');
+Route::get('search/designers', 'User\UserController@search');
 
 // Route group for guest only
 Route::group(['middleware' => ['guest:api']], static function() {

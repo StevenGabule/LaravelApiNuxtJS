@@ -2,13 +2,17 @@
   <dictionary name="John paul">
     <words>
       <w>authenticatable</w>
+      <w>barryvdh</w>
       <w>commentable</w>
       <w>debugbar</w>
       <w>designhouse</w>
       <w>fideloper</w>
       <w>fillable</w>
+      <w>flysystem</w>
+      <w>fzaninotto</w>
       <w>grimzy</w>
       <w>likeable</w>
+      <w>nunomaduro</w>
       <w>tagline</w>
     </words>
   </dictionary>

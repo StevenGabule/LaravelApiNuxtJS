@@ -93,9 +93,31 @@ class DesignController extends Controller
         return response()->json(['liked' => $isLiked], 200);
     }
 
-    public function search(Request $request)
+    public function search(Request $request): AnonymousResourceCollection
     {
         $designs = $this->designs->search($request);
+        return DesignResource::collection($designs);
+    }
+
+    public function findBySlug($slug): DesignResource
+    {
+        $design = $this->designs->withCriteria([new IsLive()])->findWhereFirst('slug', $slug);
+        return new DesignResource($design);
+    }
+
+    public function getForTeam($teamId): AnonymousResourceCollection
+    {
+        $designs = $this->designs
+            ->withCriteria([new isLive()])
+            ->findWhere('team_id', $teamId);
+        return DesignResource::collection($designs);
+    }
+
+    public function getForUser($userId)
+    {
+        $designs = $this->designs
+            ->withCriteria([new isLive()])
+            ->findWhere('user_id', $userId);
         return DesignResource::collection($designs);
     }
 }

@@ -13,7 +13,6 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        //         'name', 'email', 'password', 'tagline', 'about', 'username', 'location', 'available_to_hire',
         Schema::create('users', static function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username')->unique();

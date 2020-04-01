@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -32,7 +31,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'formatted_address',
     ];
 
-    protected $spatialFields = ['location',];
+    protected $spatialFields = ['location'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,6 +51,15 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = [
+        'photo_url'
+    ];
+
+    public function getPhotoUrlAttribute()
+    {
+        return 'https://www.gravatar.avatar/'.md5(strtolower($this->email)).'.jpg?s=200&d=mm';
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -67,7 +75,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      *
      * @return array
      */
-    public function getJWTCustomClaims() : array
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
@@ -105,9 +113,9 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     public function isOwnerOfTeam($team)
     {
         return (bool)$this->teams()
-                         ->where('id', $team->id)
-                         ->where('owner_id', $this->id)
-                         ->count();
+            ->where('id', $team->id)
+            ->where('owner_id', $this->id)
+            ->count();
     }
 
     // relationship for invitations
@@ -128,8 +136,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 
     public function getChatWithUser($user_id)
     {
-        $chat = $this->chats()->whereHas('participants', function($query) use ($user_id) {
-           $query->where('user_id', $user_id);
+        $chat = $this->chats()->whereHas('participants', function ($query) use ($user_id) {
+            $query->where('user_id', $user_id);
         })->first();
 
         return $chat;

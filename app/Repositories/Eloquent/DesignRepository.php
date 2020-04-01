@@ -68,7 +68,7 @@ class DesignRepository extends BaseRepository implements IDesign
             });
         }
 
-        if ($request->orderBy == 'likes') {
+        if ($request->orderBy === 'likes') {
             $query->withCount('likes')->orderByDesc('likes_count');
         } else {
             $query->latest();
