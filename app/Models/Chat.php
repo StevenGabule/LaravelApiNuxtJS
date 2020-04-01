@@ -33,13 +33,11 @@ class Chat extends Model
             ->count();
     }
 
-    public function markAsReadForUser($userId)
+    public function markAsReadForUser($userId): void
     {
-        return $this->messages()
+         $this->messages()
             ->whereNull('last_read')
-            ->where('user_id', '<>', $userId)
-            ->update([
-                'last_read' => Carbon::now()
-            ]);
+            ->where('user_id', $userId)
+            ->update(['last_read' => Carbon::now()]);
     }
 }

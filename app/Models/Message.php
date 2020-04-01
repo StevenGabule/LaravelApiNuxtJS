@@ -14,6 +14,17 @@ class Message extends Model
 
     protected $fillable = ['user_id', 'chat_id', 'body', 'last_read'];
 
+    public function getBodyAttribute($value)
+    {
+        if ($this->trashed()) {
+            if (!auth()->check()) {
+                return null;
+            }
+            return auth()->id() === $this->sender->id ? 'Message removed' : "{$this->sender->name} removed this message";
+        }
+        return $value;
+    }
+
     public function chat() : BelongsTo
     {
         return $this->belongsTo(Chat::class);

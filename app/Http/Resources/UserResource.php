@@ -12,12 +12,14 @@ class UserResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request) : array
     {
         return [
             'id' => $this->id,
             'username' => $this->username,
-            'email' => $this->email,
+            $this->mergeWhen(auth()->check() && auth()->id() === $this->id, [
+                'email' => $this->email,
+            ]),
             'name' => $this->name,
             'designs' => DesignResource::collection($this->whenLoaded('designs')),
             'formatted_address' => $this->formatted_address,
