@@ -14,6 +14,9 @@ Route::get('users', 'User\UserController@index');
 // get teams
 Route::get('teams/slug/{slug}', 'Teams\TeamsController@findBySlug');
 
+// search designs
+Route::get('search/designs', 'Designs\DesignController@search');
+
 // Route group for guest only
 Route::group(['middleware' => ['guest:api']], static function() {
     Route::post('register', 'Auth\RegisterController@register');
