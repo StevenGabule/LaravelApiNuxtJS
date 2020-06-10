@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Storage;
 use App\Models\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Cviebrock\EloquentTaggable\Taggable;
+use Illuminate\Support\Facades\Storage;
 
 class Design extends Model
 {
@@ -23,6 +22,12 @@ class Design extends Model
         'is_live',
         'upload_successful',
         'disk',
+    ];
+
+    protected $casts=[
+        'is_live' => 'boolean',
+        'upload_successful' => 'boolean',
+        'close_to_comments' => 'boolean'
     ];
 
     public function user(): BelongsTo
@@ -51,7 +56,7 @@ class Design extends Model
 
     protected function getImagePath($size) 
     {
-        return Storage::disk($this->disk)->url("uploads/designs/{$size}/{$this->image}");
+        return Storage::disk($this->disk)->url("uploads/designs/{$size}/".$this->image);
     }
 
 
