@@ -1,0 +1,151 @@
+{
+    "user": {
+        "_id": "604b2946f4fa941c081efd09",
+        "columnsWanted": ["title"],
+        "permission": { "role": ["Default"], "parentId": null },
+        "email": "lucasgabule@gmail.com",
+        "name": "John Paul L. Gabule",
+        "status": "Trial Expire",
+        "password": "$2b$12$0Yj/s.bAGqvKen/VIvn5U...gGva6KLF/UoWS9q4kp/2J6BbgtWV6",
+        "mws": {
+            "authToken": "amzn.mws.faad3b25-5590-05f7-d2de-f743fce49ed9",
+            "marketplaceId": "ATVPDKIKX0DER",
+            "sellerId": "AF2LTH0H0PA4H"
+        },
+        "noOfActiveProducts": 11,
+        "referralCode": "rgm4months",
+        "payment": {
+            "stripeUserId": "cus_J8GAaMTIOyujt3",
+            "nextInvoicedChargedAt": 1620808903,
+            "planAmount": 29.97,
+            "planID": "plan_G8PZVEJBwyycG6",
+            "planName": "Yearly Pro",
+            "subscribedAt": "2021-04-27T15:28:41.060Z",
+            "subscriptionId": "sub_sched_1IkshsBNsnA5tqJ0suDxgsSv",
+            "tierNo": 0
+        },
+        "roles": [
+            {
+                "_id": "5e25bc39d283d70012e3d138",
+                "role": "Default",
+                "resource": "Dashboard",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d139",
+                "role": "Default",
+                "resource": "Inventory",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13a",
+                "role": "Default",
+                "resource": "Payment",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13b",
+                "role": "Default",
+                "resource": "MWS",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13c",
+                "role": "Default",
+                "resource": "Invite User",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13d",
+                "role": "Default",
+                "resource": "Whats New",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13e",
+                "role": "Default",
+                "resource": "Export Inventory",
+                "action": "read",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d13f",
+                "role": "Default",
+                "resource": "Import Inventory",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d140",
+                "role": "Default",
+                "resource": "Cost Price",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d141",
+                "role": "Default",
+                "resource": "Purchase Link",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d142",
+                "role": "Default",
+                "resource": "Suppliers",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d143",
+                "role": "Default",
+                "resource": "Store Section",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5e25bc39d283d70012e3d144",
+                "role": "Default",
+                "resource": "Notes Section",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5ecee6d095c8b10012f936dc",
+                "role": "Default",
+                "resource": "Ship by",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            },
+            {
+                "_id": "5f071a6c1dcaec00126bb8fa",
+                "role": "Default",
+                "resource": "Decided Buy Quantity",
+                "action": "update",
+                "possession": "any",
+                "__v": 0
+            }
+        ]
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.bHVjYXNnYWJ1bGVAZ21haWwuY29t.7t-EDZVDSWw9x9k4MLiqPi6r-adBgudqR2MhOnWaVhQ"
+}

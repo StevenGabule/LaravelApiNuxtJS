@@ -25,8 +25,7 @@ class UserController extends Controller
     {
         $users = $this->users->withCriteria([
             new EagerLoad(['designs'])
-        ])
-            ->all();
+        ])->all();
         return UserResource::collection($users);
     }
 

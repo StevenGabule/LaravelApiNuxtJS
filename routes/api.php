@@ -1,6 +1,8 @@
 <?php
 
 // public routes
+use Illuminate\Support\Facades\Route;
+
 Route::get('me', 'User\MeController@getMe');
 
 // get design
@@ -22,17 +24,17 @@ Route::get('search/designs', 'Designs\DesignController@search');
 Route::get('search/designers', 'User\UserController@search');
 
 // Route group for guest only
-Route::group(['middleware' => ['guest:api']], static function() {
+Route::group(['middleware' => ['guest:api']], static function () {
     Route::post('register', 'Auth\RegisterController@register');
-    Route::post('verification/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('login', 'Auth\LoginController@login');
+    Route::post('verification/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('verification/resend', 'Auth\VerificationController@resend');
-    Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('password/reset','Auth\ResetPasswordController@reset');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 });
 
 // Route group for authenticated users only
-Route::group(['middleware' => ['auth:api']], static function() {
+Route::group(['middleware' => ['auth:api']], static function () {
     Route::post('logout', 'Auth\LoginController@logout');
     Route::put('settings/profile', 'User\SettingsController@updateProfile');
     Route::put('settings/password', 'User\SettingsController@updatePassword');
@@ -41,7 +43,6 @@ Route::group(['middleware' => ['auth:api']], static function() {
     Route::post('designs', 'Designs\UploadController@upload');
     Route::put('designs/{id}', 'Designs\DesignController@update');
     Route::get('designs/{id}/byUser', 'Designs\DesignController@userOwnsDesign');
-
     Route::delete('designs/{id}', 'Designs\DesignController@destroy');
 
     // comments
@@ -56,7 +57,9 @@ Route::group(['middleware' => ['auth:api']], static function() {
     // TEAMS
     Route::post('teams', 'Teams\TeamsController@store');
     Route::get('teams/{id}', 'Teams\TeamsController@findById');
+
     Route::get('teams', 'Teams\TeamsController@index');
+
     Route::get('users/teams', 'Teams\TeamsController@fetchUserTeams');
     Route::put('teams/{id}', 'Teams\TeamsController@update');
     Route::delete('teams/{id}', 'Teams\TeamsController@destroy');
@@ -74,5 +77,4 @@ Route::group(['middleware' => ['auth:api']], static function() {
     Route::get('chats/{id}/messages', 'Chats\ChatController@getChatMessages');
     Route::put('chats/{id}/markAsRead', 'Chats\ChatController@markAsRead');
     Route::delete('messages/{id}', 'Chats\ChatController@destroyMessage');
-
 });

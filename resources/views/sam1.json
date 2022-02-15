@@ -1,0 +1,190 @@
+{
+    "stripePlans": [
+        {
+            "id": "plan_G8PZVEJBwyycG6",
+            "object": "plan",
+            "active": true,
+            "aggregate_usage": null,
+            "amount": null,
+            "amount_decimal": null,
+            "billing_scheme": "tiered",
+            "created": 1573124536,
+            "currency": "usd",
+            "interval": "year",
+            "interval_count": 1,
+            "livemode": false,
+            "metadata": {},
+            "nickname": "Yearly",
+            "product": "prod_G08AhM7XrAY92I",
+            "tiers": [
+                {
+                    "flat_amount": 29970,
+                    "flat_amount_decimal": "29970",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": 400
+                },
+                {
+                    "flat_amount": 49970,
+                    "flat_amount_decimal": "49970",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": 1000
+                },
+                {
+                    "flat_amount": 79970,
+                    "flat_amount_decimal": "79970",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": null
+                }
+            ],
+            "tiers_mode": "volume",
+            "transform_usage": null,
+            "trial_period_days": null,
+            "usage_type": "licensed"
+        },
+        {
+            "id": "plan_G8PZ4i0xdc2kxL",
+            "object": "plan",
+            "active": true,
+            "aggregate_usage": null,
+            "amount": null,
+            "amount_decimal": null,
+            "billing_scheme": "tiered",
+            "created": 1573124482,
+            "currency": "usd",
+            "interval": "month",
+            "interval_count": 1,
+            "livemode": false,
+            "metadata": {},
+            "nickname": "Monthly",
+            "product": "prod_G08AhM7XrAY92I",
+            "tiers": [
+                {
+                    "flat_amount": 2997,
+                    "flat_amount_decimal": "2997",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": 400
+                },
+                {
+                    "flat_amount": 4997,
+                    "flat_amount_decimal": "4997",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": 1000
+                },
+                {
+                    "flat_amount": 7997,
+                    "flat_amount_decimal": "7997",
+                    "unit_amount": null,
+                    "unit_amount_decimal": null,
+                    "up_to": null
+                }
+            ],
+            "tiers_mode": "volume",
+            "transform_usage": null,
+            "trial_period_days": null,
+            "usage_type": "licensed"
+        }
+    ],
+    "stripeCoupons": [
+        {
+            "_id": "FBAInsider",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "FBAInsider"
+        },
+        {
+            "_id": "FriendofRyan",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "FriendofRyan"
+        },
+        {
+            "_id": "Grant10",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "Grant10"
+        },
+        {
+            "_id": "Legends50",
+            "couponOffPercent": 50,
+            "duration": "forever",
+            "name": null
+        },
+        {
+            "_id": "Proven10",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "Proven10"
+        },
+        {
+            "_id": "Replen50",
+            "couponOffPercent": 50,
+            "duration": "forever",
+            "name": "Replen50"
+        },
+        {
+            "_id": "ReplenClass",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "ReplenClass"
+        },
+        {
+            "_id": "coachbill",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "coachbill"
+        },
+        {
+            "_id": "proseller10",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "proseller10"
+        },
+        {
+            "_id": "rgm4months",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": "rgm4months"
+        },
+        {
+            "_id": "GrantOneYearFree",
+            "couponOffPercent": 100,
+            "duration": "once",
+            "name": "GrantOneYearFree"
+        },
+        {
+            "_id": "Insider10",
+            "couponOffPercent": 10,
+            "duration": "forever",
+            "name": null
+        },
+        {
+            "_id": "LEGENDS50",
+            "couponOffPercent": 50,
+            "duration": "forever",
+            "name": "LEGENDS50"
+        },
+        {
+            "_id": "Qbatch50",
+            "couponOffPercent": 50,
+            "duration": "forever",
+            "name": "Qbatch50"
+        },
+        {
+            "_id": "boyboyi",
+            "couponOffPercent": 10,
+            "duration": "once",
+            "name": "boyboyi"
+        },
+        {
+            "_id": "moose",
+            "couponOffPercent": 5,
+            "duration": "forever",
+            "name": "moose"
+        }
+    ]
+}

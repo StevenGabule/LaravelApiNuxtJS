@@ -25,21 +25,21 @@ class SettingsController extends Controller
 
         $location = new Point($request->location['latitude'], $request->location['longitude']);
         $user->update([
-           'name' => $request->name,
-           'formatted_address' => $request->formatted_address,
-           'location' => $location,
-           'available_to_hire' => $request->available_to_hire,
-           'about' => $request->about,
-           'tagline' => $request->tagline,
+            'name' => $request->name,
+            'formatted_address' => $request->formatted_address,
+            'location' => $location,
+            'available_to_hire' => $request->available_to_hire,
+            'about' => $request->about,
+            'tagline' => $request->tagline,
         ]);
         return new UserResource($user);
     }
 
     public function updatePassword(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'current_password' => ['required', new MatchOldPassword],
-            'password' => ['required', 'confirmed', 'min:6',new CheckSamePassword],
+            'password' => ['required', 'confirmed', 'min:6', new CheckSamePassword],
         ]);
 
         $request->user()->update([

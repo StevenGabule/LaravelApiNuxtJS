@@ -15,11 +15,11 @@ use App\Repositories\Eloquent\Criteria\{EagerLoad, IsLive, LatestFirst, ForUser}
 class DesignController extends Controller
 {
     protected $designs;
-    
+
     public function __construct(IDesign $designs) {
         $this->designs = $designs;
     }
-    
+
     public function index(): AnonymousResourceCollection
     {
         $designs = $this->designs->withCriteria([
@@ -40,6 +40,7 @@ class DesignController extends Controller
     public function update(Request $request, $id): DesignResource
     {
         $design = $this->designs->find($id);
+
         $this->authorize('update', $design);
         $this->validate($request, [
             'title' => ['required', 'unique:designs,title,'.$id],
@@ -62,7 +63,7 @@ class DesignController extends Controller
         return new DesignResource($design);
     }
 
-    public function destroy($id) 
+    public function destroy($id)
     {
         $design = $this->designs->find($id);
 
@@ -126,5 +127,4 @@ class DesignController extends Controller
         return new DesignResource($design);
     }
 
-     
 }

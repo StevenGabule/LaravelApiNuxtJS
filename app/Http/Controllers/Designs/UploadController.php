@@ -20,7 +20,7 @@ class UploadController extends Controller
 
         // get the original file name and replace any with
         // business Card.png = timestamp()_business_card.png
-        $filename = time().'_'.preg_replace('/\s+/','_', strtolower($image->getClientOriginalName()));
+        $filename = time().'_'.preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
 
         // move the image to the temporary location (tmp)
         $tmp = $image->storeAs('uploads/original', $filename, 'tmp');
@@ -34,6 +34,5 @@ class UploadController extends Controller
         // dispatch a job to handle the image manipulation
         $this->dispatch(new UploadImage($design));
         return response()->json($design, 200);
-
     }
 }

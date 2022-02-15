@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Teams;
 
 use App\Http\Resources\TeamResource;
-use App\Repositories\Contracts\IInvitation;
-use App\Repositories\Contracts\IUser;
+use App\Repositories\Contracts\{IInvitation, IUser, ITeam};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Str;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\ITeam;
 use Illuminate\Http\Request;
 
 class TeamsController extends Controller
@@ -27,8 +25,6 @@ class TeamsController extends Controller
 
     public function index(Request $request)
     {
-
-
     }
 
     public function store(Request $request): TeamResource

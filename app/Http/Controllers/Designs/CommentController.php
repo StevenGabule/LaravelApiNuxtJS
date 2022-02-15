@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-
     /**
      * @var IComment
      */
@@ -47,7 +46,7 @@ class CommentController extends Controller
         ]);
 
         $comment = $this->comments->update($id, [
-            'data' => $request->body
+            'body' => $request->body
         ]);
 
         return new CommentResource($comment);

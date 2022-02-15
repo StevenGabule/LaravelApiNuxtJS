@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\URL;
 
 class VerificationController extends Controller
 {
-
     protected $users;
 
-       public function __construct(IUser $users)
+    public function __construct(IUser $users)
     {
         $this->middleware('throttle:6,1')->only('verify', 'resend');
         $this->users = $users;

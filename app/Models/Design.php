@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class Design extends Model
 {
     use Taggable, Likeable;
+
     protected $fillable = [
         'user_id',
         'team_id',
@@ -24,7 +25,7 @@ class Design extends Model
         'disk',
     ];
 
-    protected $casts=[
+    protected $casts = [
         'is_live' => 'boolean',
         'upload_successful' => 'boolean',
         'close_to_comments' => 'boolean'
@@ -54,10 +55,8 @@ class Design extends Model
         ];
     }
 
-    protected function getImagePath($size) 
+    protected function getImagePath($size)
     {
-        return Storage::disk($this->disk)->url("uploads/designs/{$size}/".$this->image);
+        return Storage::disk($this->disk)->url("uploads/designs/{$size}/" . $this->image);
     }
-
-
 }
