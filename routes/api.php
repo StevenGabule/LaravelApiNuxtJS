@@ -5,17 +5,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('me', 'User\MeController@getMe');
 
-// get design
+// GET DESIGN
 Route::get('designs', 'Designs\DesignController@index');
 Route::get('designs/{id}', 'Designs\DesignController@findDesign');
 Route::get('designs/slug/{slug}', 'Designs\DesignController@findBySlug');
 
-// get users
+// GET USER DESIGN AND USERS RECORDS
 Route::get('users', 'User\UserController@index');
 Route::get('user/{username}', 'User\UserController@findByUsername');
 Route::get('users/{id}/designs', 'Designs\DesignController@getForUser');
 
-// get teams
+// GET TEAMS
 Route::get('teams/slug/{slug}', 'Teams\TeamsController@findBySlug');
 Route::get('teams/{id}/designs', 'Designs\DesignController@getForTeam');
 

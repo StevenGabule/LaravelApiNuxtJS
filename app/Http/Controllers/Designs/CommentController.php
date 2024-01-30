@@ -23,9 +23,7 @@ class CommentController extends Controller
 
     public function store(Request $request, $designId)
     {
-        $this->validate($request, [
-           'body' => ['required']
-        ]);
+        $this->validate($request, ['body' => ['required']]);
 
         $comment = $this->designs->addComment($designId, [
             'body' => $request->body,
@@ -38,29 +36,17 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         $comment = $this->comments->find($id);
-
         $this->authorize('update', $comment);
-
-        $this->validate($request, [
-            'body' => ['required']
-        ]);
-
-        $comment = $this->comments->update($id, [
-            'body' => $request->body
-        ]);
-
+        $this->validate($request, ['body' => ['required']]);
+        $comment = $this->comments->update($id, ['body' => $request->body]);
         return new CommentResource($comment);
-
     }
 
     public function destroy($id)
     {
         $comment = $this->comments->find($id);
-
         $this->authorize('delete', $comment);
-
         $this->comments->delete($id);
-
         return response()->json(['message' => 'Item Deleted'], 200);
     }
 }

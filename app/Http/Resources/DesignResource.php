@@ -36,7 +36,7 @@ class DesignResource extends JsonResource
             'comments_count' => $this->comments()->count(),
             'comments' => CommentResource::collection($this->comments),
             'user' => new UserResource($this->user)
-            
+
         ];
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
     |--------------------------------------------------------------------------
@@ -20,16 +20,15 @@ class ResetPasswordController extends Controller
     |
     */
 
-    use ResetsPasswords;
+  use ResetsPasswords;
 
-    protected function sendResetResponse(Request $request, $response)
-    {
-        return response()->json(['status' => trans($response), 200]);
-    }
+  protected function sendResetResponse(Request $request, $response)
+  {
+    return response()->json(['status' => trans($response), 200]);
+  }
 
-    protected function sendResetFailedResponse(Request $request, $response)
-    {
-        return response()->json(['email' => trans($response)], 200);
-    }
-
+  protected function sendResetFailedResponse(Request $request, $response)
+  {
+    return response()->json(['email' => trans($response)], 200);
+  }
 }

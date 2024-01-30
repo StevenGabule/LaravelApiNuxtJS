@@ -52,8 +52,7 @@ class UploadImage implements ShouldQueue
                 $constraint->aspectRatio();
             })->save($thumbnail = storage_path("uploads/thumbnail/$filename"));
 
-            // store images to permanent disk
-            // original image
+            // store images to permanent disk original image
             if (Storage::disk($disk)->put("uploads/designs/original/$filename", fopen($original_file, 'r+'))) {
                 File::delete($original_file);
             }

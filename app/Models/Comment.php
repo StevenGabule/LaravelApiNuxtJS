@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    use Likeable;
+  use Likeable;
 
-    protected $fillable = ['body', 'user_id'];
+  protected $fillable = ['body', 'user_id'];
 
-    public function commentable()
-    {
-        return $this->morphTo();
-    }
+  public function commentable()
+  {
+    return $this->morphTo();
+  }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }
